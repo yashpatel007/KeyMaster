@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -171,9 +172,9 @@ public class KeyMaster {
     
     public void insertTokeyset(String key, String value){
         keyset.put(key, value);
-        
+        //  ./src/main/java/com/mycompany/keymaster/data/data.json
         //Write JSON file
-        try (FileWriter file = new FileWriter("/Users/yashpatel/NetBeansProjects/KeyMaster/src/main/java/com/mycompany/keymaster/data/data.json")) {
+        try (FileWriter file = new FileWriter("data.json")) {
  
             file.write(keyset.toJSONString());
             file.flush();
@@ -189,7 +190,7 @@ public class KeyMaster {
     public void removeFromkeyset(String key){
         keyset.remove(key);
          //Write JSON file
-        try (FileWriter file = new FileWriter("/Users/yashpatel/NetBeansProjects/KeyMaster/src/main/java/com/mycompany/keymaster/data/data.json")) {
+        try (FileWriter file = new FileWriter("data.json")) {
  
             file.write(keyset.toJSONString());
             file.flush();
@@ -204,9 +205,12 @@ public class KeyMaster {
     }
     
     public JSONObject getKeysData(){
+        
+//        File directory = new File("./");
+//        System.out.println(directory.getAbsolutePath());
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("/Users/yashpatel/NetBeansProjects/KeyMaster/src/main/java/com/mycompany/keymaster/data/data.json"))
+        try (FileReader reader = new FileReader("data.json"))
         {
             //Read JSON file
            Object obj = jsonParser.parse(reader);

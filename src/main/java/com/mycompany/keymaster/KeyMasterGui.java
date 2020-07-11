@@ -220,6 +220,7 @@ public class KeyMasterGui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new KeyMasterGui().setVisible(true);
+                
             }
         });
     }
@@ -236,3 +237,5 @@ public class KeyMasterGui extends javax.swing.JFrame {
     private javax.swing.JPanel mykeys;
     // End of variables declaration//GEN-END:variables
 }
+
+
