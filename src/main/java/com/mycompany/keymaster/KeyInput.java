@@ -107,7 +107,7 @@ public class KeyInput extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.parent.km.insertTokeyset(key_input.getText().toLowerCase().toString(), value_input.getText().toString());
-        this.parent.addTable();
+        this.parent.repaintTable();
        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

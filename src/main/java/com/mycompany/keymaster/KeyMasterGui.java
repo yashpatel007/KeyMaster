@@ -36,12 +36,34 @@ public class KeyMasterGui extends javax.swing.JFrame {
      * Creates new form KeyMasterGui
      */
     
-    public KeyMaster km = new KeyMaster();
-    
+    public KeyMaster km;
+    DefaultTableModel model;
+    JTable table;
     public KeyMasterGui() {
         initComponents();
+        
+        // initializr global variables
+        km = new KeyMaster();
+        model = new DefaultTableModel();
+        table = new JTable();
+        
+        initTable();
         initFrameLayout();
         makeLayout();
+    }
+    
+    private void initTable(){
+        // initialize table
+        this.table.setModel(this.model);
+        // Create a couple of columns 
+        model.addColumn("Hot Key"); 
+        model.addColumn("Value"); 
+        // Append a row 
+        populateTable(model);
+        //model.addRow(new Object[]{"v1", "v2"});
+        table.setFillsViewportHeight(true);
+        JScrollPane scrollPane = new JScrollPane(table);
+        mykeys.add(scrollPane);
     }
     
     private void initFrameLayout(){
@@ -55,28 +77,13 @@ public class KeyMasterGui extends javax.swing.JFrame {
     
     public void makeLayout(){
        
-        km.startRecognition();
-        addTable();
-       
-         
+        km.startRecognition(); 
     }
     
-    public void addTable(){
-        
-        System.out.println("adding table");
-        String[] columnsNames = {"Hot Key","Value"};
-        DefaultTableModel model = new DefaultTableModel();
-        JTable table = new JTable();
-        table.setModel(model);
-        // Create a couple of columns 
-        model.addColumn("Hot Key"); 
-        model.addColumn("Value"); 
-        // Append a row 
+    public void repaintTable(){
+        model.setRowCount(0);
         populateTable(model);
-        //model.addRow(new Object[]{"v1", "v2"});
-        table.setFillsViewportHeight(true);
-        JScrollPane scrollPane = new JScrollPane(table);
-        mykeys.add(scrollPane);
+        
     }
     
     private DefaultTableModel populateTable(DefaultTableModel model){
