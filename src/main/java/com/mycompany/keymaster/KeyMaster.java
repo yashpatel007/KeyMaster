@@ -95,7 +95,7 @@ public class KeyMaster {
                    
                     if(keyText == "/" && buffer.endsWith("///")){
                            isCapturing = true;
-                           System.out.println("iscap");
+                           System.out.println("iscapturing");
                     }
                     
                     if(isCapturing && keyText == "→"){
@@ -174,7 +174,7 @@ public class KeyMaster {
         keyset.put(key, value);
         //  ./src/main/java/com/mycompany/keymaster/data/data.json
         //Write JSON file
-        try (FileWriter file = new FileWriter("data.json")) {
+        try (FileWriter file = new FileWriter("./src/main/java/com/mycompany/keymaster/data/data.json")) {
  
             file.write(keyset.toJSONString());
             file.flush();
@@ -190,7 +190,7 @@ public class KeyMaster {
     public void removeFromkeyset(String key){
         keyset.remove(key);
          //Write JSON file
-        try (FileWriter file = new FileWriter("data.json")) {
+        try (FileWriter file = new FileWriter("./src/main/java/com/mycompany/keymaster/data/data.json")) {
  
             file.write(keyset.toJSONString());
             file.flush();
@@ -210,7 +210,7 @@ public class KeyMaster {
 //        System.out.println(directory.getAbsolutePath());
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("data.json"))
+        try (FileReader reader = new FileReader("./src/main/java/com/mycompany/keymaster/data/data.json"))
         {
             //Read JSON file
            Object obj = jsonParser.parse(reader);
@@ -227,6 +227,4 @@ public class KeyMaster {
         return null;
        
     }
- 
 } 
-
